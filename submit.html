@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Submit an entry · Big Ideas for Bellevue</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:opsz,wght@12..96,500..800&display=swap">
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+<div id="site-header"></div>
+<main data-page="submit">
+<section class="band"><div class="wrap stack-lg">
+  <div class="stack">
+    <p class="eyebrow">For students</p>
+    <h1>Submit an entry</h1>
+    <p class="lede">Students can fill this out themselves or with help from an adult. It takes about ten minutes if the essay and a photo of the art are ready. Deadline: <span data-date="submissionsClose"></span>.</p>
+  </div>
+
+  <div class="sheet" id="entry-closed" hidden><div class="done">
+    <h2>Submissions are closed</h2>
+    <p>The entry window is not open right now. Check the <a href="index.html">dates on the home page</a>.</p>
+  </div></div>
+
+  <div class="sheet" id="entry-done" hidden><div class="done">
+    <h2>Entry received</h2>
+    <p>Keep this reference code. Use it if you need to ask about the entry.</p>
+    <p class="ref" id="entry-ref"></p>
+    <p>If anything needs fixing, we will write to <strong id="entry-done-email"></strong>.</p>
+    <p class="msg" id="entry-demo-note">Demo mode: this entry was not saved. Connect the backend to accept real entries.</p>
+    <div><a class="btn ghost" href="index.html">Back to home</a></div>
+  </div></div>
+
+  <form class="sheet stack" id="entry-form" novalidate>
+    <fieldset>
+      <legend>The student</legend>
+      <div class="row">
+        <div class="field"><label for="student_first_name">First name</label><input type="text" id="student_first_name" name="student_first_name" required maxlength="60" autocomplete="off"></div>
+        <div class="field"><label for="student_last_name">Last name</label><input type="text" id="student_last_name" name="student_last_name" required maxlength="60" autocomplete="off"></div>
+      </div>
+      <p class="hint">Judges never see the student's name or school.</p>
+      <div class="row">
+        <div class="field"><label for="grade">Grade this school year</label><select id="grade" name="grade" required data-options="grades"><option value="">Choose a grade</option></select></div>
+        <div class="field"><label for="school">School</label><input type="text" id="school" name="school" required maxlength="120" placeholder="School name, or Homeschool"></div>
+      </div>
+      <label class="check" for="eligible"><input type="checkbox" id="eligible" name="eligible" required><span>The student lives in Bellevue or attends a Bellevue School District school.</span></label>
+    </fieldset>
+
+    <fieldset>
+      <legend>The idea</legend>
+      <div class="field"><label for="title">Title of the idea</label><input type="text" id="title" name="title" required maxlength="100" placeholder="Shade sails over the playground"></div>
+      <div class="field">
+        <label for="department">Which part of the city could act on it?</label>
+        <select id="department" name="department" required data-options="departments"><option value="">Choose a department</option></select>
+        <span class="hint">A best guess is fine. We will route it to the right place.</span>
+      </div>
+      <div class="field">
+        <label for="essay">Essay</label>
+        <span class="hint">Paste or type the student's essay. What is the problem, what should the city do, and who does it help?</span>
+        <textarea id="essay" name="essay" required></textarea>
+        <span class="count" id="essay-count" aria-live="polite"></span>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>The art</legend>
+      <div class="field">
+        <label for="art">Photo or scan of the art</label>
+        <span class="hint">One JPG, PNG or WebP image, up to 8 MB. Please keep the student's name and face out of the picture.</span>
+        <input type="file" id="art" name="art" accept="image/jpeg,image/png,image/webp" required>
+        <img class="art-preview" id="art-preview" alt="Preview of the uploaded art" hidden>
+      </div>
+      <div class="field"><label for="art_caption">One sentence about the art <span class="hint">(optional)</span></label><input type="text" id="art_caption" name="art_caption" maxlength="200"></div>
+    </fieldset>
+
+    <fieldset>
+      <legend>How to reach you</legend>
+      <div class="row">
+        <div class="field"><label for="contact_email">Email</label><input type="email" id="contact_email" name="contact_email" required maxlength="200" autocomplete="email"></div>
+        <div class="field"><label for="contact_phone">Phone <span class="hint">(optional)</span></label><input type="tel" id="contact_phone" name="contact_phone" maxlength="40" autocomplete="tel"></div>
+      </div>
+      <p class="hint">The student's own email works. So does a parent's or a teacher's.</p>
+      <label class="check" for="consent_original"><input type="checkbox" id="consent_original" name="consent_original" required><span>The essay and the art are the student's own work, made without AI tools.</span></label>
+      <label class="check" for="consent_display"><input type="checkbox" id="consent_display" name="consent_display" required><span>The essay and art may be shown to judges without the student's name, and shared publicly if the entry wins. I have read the <a href="rules.html">rules</a>.</span></label>
+      <label class="check" for="consent_media"><input type="checkbox" id="consent_media" name="consent_media"><span>Optional: if the student wins, their first name, grade and school may be published with the entry.</span></label>
+    </fieldset>
+
+    <div class="hp" aria-hidden="true"><label for="website">Leave this empty</label><input type="text" id="website" name="website" tabindex="-1" autocomplete="off"></div>
+    <p class="msg" id="entry-msg" role="alert" hidden></p>
+    <div><button class="btn" type="submit" id="entry-send">Send entry</button></div>
+  </form>
+</div></section>
+</main>
+<div id="site-footer"></div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
+<script src="assets/config.js"></script>
+<script src="assets/site.js"></script>
+</body>
+</html>
