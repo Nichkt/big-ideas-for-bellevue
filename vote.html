@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Your ballot · Big Ideas for Bellevue</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:opsz,wght@12..96,500..800&display=swap">
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+<div id="site-header"></div>
+<main data-page="vote">
+<section class="band"><div class="wrap stack-lg">
+  <div class="stack">
+    <p class="eyebrow">Judge ballot</p>
+    <h1>Your ballot</h1>
+    <p class="lede">One winner and one runner-up in each grade. Tap a pick again to clear it.</p>
+  </div>
+
+  <form class="sheet stack" id="signin" hidden>
+    <fieldset>
+      <legend>Sign in to your ballot</legend>
+      <div class="field"><label for="signin-email">The email you signed up with</label><input type="email" id="signin-email" required autocomplete="email"></div>
+    </fieldset>
+    <p class="msg" id="signin-msg" role="status" hidden></p>
+    <div class="btn-row"><button class="btn" type="submit" id="signin-send">Email me a link</button><a class="btn ghost" href="judges.html">Sign up to judge</a></div>
+  </form>
+
+  <div class="stack" id="ballot" hidden>
+    <div class="ballot-status">
+      <p><strong id="ballot-status"></strong> <span class="muted" id="ballot-hello"></span></p>
+      <button class="linkbtn" type="button" id="signout" hidden>Sign out</button>
+    </div>
+    <p class="msg" id="ballot-msg" role="alert" hidden></p>
+    <div class="grade-tabs" id="grade-tabs" role="tablist" aria-label="Grade"></div>
+    <div class="stack" id="grade-panel"></div>
+  </div>
+</div></section>
+</main>
+<div id="site-footer"></div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
+<script src="assets/config.js"></script>
+<script src="assets/site.js"></script>
+</body>
+</html>
