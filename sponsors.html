@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sponsor · Big Ideas for Bellevue</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:opsz,wght@12..96,500..800&display=swap">
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+<div id="site-header"></div>
+<main data-page="sponsors">
+<section class="band"><div class="wrap stack-lg">
+  <div class="stack">
+    <p class="eyebrow">For businesses, families and foundations</p>
+    <h1>Sponsor a scholarship</h1>
+    <p class="lede">Sponsor money becomes scholarships for the 26 students who win or place.</p>
+  </div>
+  <div class="tiers" id="tiers"></div>
+  <p class="muted">All sponsor money goes into one scholarship fund that is shared across the grades. Any number of sponsors can join at each level.</p>
+</div></section>
+
+<section class="band tinted"><div class="wrap split">
+  <div class="stack">
+    <h2>Sponsors so far</h2>
+    <p class="muted" id="sponsor-empty">Sponsor names will be listed here as they sign on. Be the first.</p>
+    <ul class="sponsor-list" id="sponsor-list"></ul>
+    <div class="prose">
+      <h3>What sponsors do not get</h3>
+      <p>Sponsors can sign up to judge like anyone else, with one ballot. A sponsorship does not buy extra votes or a say in who wins.</p>
+    </div>
+  </div>
+  <div>
+    <div class="sheet" id="sponsor-done" hidden><div class="done">
+      <h2>Thank you</h2>
+      <p>We have your note and will write back within a few days.</p>
+      <p class="msg" id="sponsor-demo-note">Demo mode: this note was not saved.</p>
+    </div></div>
+    <form class="sheet stack" id="sponsor-form" novalidate>
+      <fieldset>
+        <legend>Ask about sponsoring</legend>
+        <div class="field"><label for="organization">Business or family name</label><input type="text" id="organization" name="organization" required maxlength="160" autocomplete="organization"></div>
+        <div class="row">
+          <div class="field"><label for="contact_name">Your name</label><input type="text" id="contact_name" name="contact_name" required maxlength="120" autocomplete="name"></div>
+          <div class="field"><label for="sponsor_email">Email</label><input type="email" id="sponsor_email" name="email" required maxlength="200" autocomplete="email"></div>
+        </div>
+        <div class="field"><label for="tier">Level you are thinking about</label><select id="tier" name="tier" required data-options="tiers"><option value="">Choose a level</option><option value="Not sure yet">Not sure yet</option></select></div>
+        <div class="field"><label for="message">Anything we should know <span class="hint">(optional)</span></label><textarea id="message" name="message" maxlength="2000" style="min-height:7rem"></textarea></div>
+      </fieldset>
+      <div class="hp" aria-hidden="true"><label for="fax">Leave this empty</label><input type="text" id="fax" name="fax" tabindex="-1" autocomplete="off"></div>
+      <p class="msg" id="sponsor-msg" role="alert" hidden></p>
+      <div><button class="btn" type="submit" id="sponsor-send">Send</button></div>
+    </form>
+  </div>
+</div></section>
+</main>
+<div id="site-footer"></div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
+<script src="assets/config.js"></script>
+<script src="assets/site.js"></script>
+</body>
+</html>
