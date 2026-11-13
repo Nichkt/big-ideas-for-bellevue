@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Be a judge · Big Ideas for Bellevue</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:opsz,wght@12..96,500..800&display=swap">
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+<div id="site-header"></div>
+<main data-page="judges">
+<section class="band"><div class="wrap split">
+  <div class="stack-lg">
+    <div class="stack">
+      <p class="eyebrow">Community judging</p>
+      <h1>Be a judge</h1>
+      <p class="lede">Anyone 18 or older can judge. You get one ballot, with a winner pick and a runner-up pick in each grade from kindergarten through 12th.</p>
+    </div>
+    <div class="prose">
+      <h2>How judging works</h2>
+      <p>Sign up with your email. We send a link to confirm it is you, and that link opens your ballot. One email address is one judge.</p>
+      <p>Voting dates: <strong data-date="judgingWindow"></strong>. You can vote in as many grades as you have time for, and change your picks until voting closes.</p>
+      <p>Entries are shown by number. Names and schools are hidden. If someone in your family entered, tell us the grade below and that grade's ballot will be closed to you.</p>
+      <h3>What to look for</h3>
+      
+    <ol>
+      <li>Is the problem real, and is it explained clearly?</li>
+      <li>Could the city carry out the idea?</li>
+      <li>Does the art help you understand it?</li>
+      <li>Does it sound like the student's own thinking?</li>
+    </ol>
+      <p>Judge each entry against others in the same grade. Neat handwriting and expensive art supplies should not decide it.</p>
+      <p>Already signed up? <a href="vote.html">Open your ballot</a>.</p>
+    </div>
+  </div>
+
+  <div>
+    <div class="sheet" id="judge-done" hidden><div class="done">
+      <h2>Check your email</h2>
+      <p>We sent a link to <strong id="judge-done-email"></strong>. Open it on this device to confirm your address and see your ballot.</p>
+      <p class="msg" id="judge-demo-note">Demo mode: no email was sent. You can still <a href="vote.html">try the sample ballot</a>.</p>
+    </div></div>
+
+    <form class="sheet stack" id="judge-form" novalidate>
+      <fieldset>
+        <legend>Sign up</legend>
+        <div class="field"><label for="judge_name">Your name</label><input type="text" id="judge_name" name="name" required maxlength="120" autocomplete="name"></div>
+        <div class="field"><label for="judge_email">Email</label><input type="email" id="judge_email" name="email" required maxlength="200" autocomplete="email"><span class="hint">Used only to confirm your ballot and tell you when voting opens.</span></div>
+        <div class="field">
+          <label for="connection">Your connection to Bellevue</label>
+          <select id="connection" name="connection" required>
+            <option value="">Choose one</option>
+            <option>I live in Bellevue</option>
+            <option>Parent or guardian of a student</option>
+            <option>Teacher or school staff</option>
+            <option>I work or own a business in Bellevue</option>
+            <option>Sponsor</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="field">
+          <span class="label" id="recuse-label">Did someone in your family enter? Check their grade.</span>
+          <span class="hint">You will sit out those grades. Leave blank if none.</span>
+          <div class="chips" id="recuse" role="group" aria-labelledby="recuse-label"></div>
+        </div>
+        <label class="check" for="judge_adult"><input type="checkbox" id="judge_adult" name="adult" required><span>I am 18 or older.</span></label>
+        <label class="check" for="judge_fair"><input type="checkbox" id="judge_fair" name="fair" required><span>I will vote once, under my own name, on the merit of each entry.</span></label>
+      </fieldset>
+      <div class="hp" aria-hidden="true"><label for="company">Leave this empty</label><input type="text" id="company" name="company" tabindex="-1" autocomplete="off"></div>
+      <p class="msg" id="judge-msg" role="alert" hidden></p>
+      <div><button class="btn" type="submit" id="judge-send">Sign up to judge</button></div>
+    </form>
+  </div>
+</div></section>
+</main>
+<div id="site-footer"></div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
+<script src="assets/config.js"></script>
+<script src="assets/site.js"></script>
+</body>
+</html>
